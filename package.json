@@ -1,0 +1,27 @@
+{
+  "name": "5-clima-app",
+  "version": "1.0.0",
+  "description": "Aplicacion de clima",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Curso-NodeJs/5-clima-app.git"
+  },
+  "keywords": [
+    "clima",
+    "app"
+  ],
+  "author": "Juan David Mendez Campuzano",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Curso-NodeJs/5-clima-app/issues"
+  },
+  "homepage": "https://github.com/Curso-NodeJs/5-clima-app#readme",
+  "dependencies": {
+    "colors": "^1.4.0",
+    "inquirer": "^8.0.0"
+  }
+}
