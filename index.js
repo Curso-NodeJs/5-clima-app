@@ -1,5 +1,6 @@
-const { leerInput,inquirerMenu, pausa } = require('./helpers/inquirer')
-const { Busquedas } = require('./models/busquedas')
+require('dotenv').config()
+const { leerInput,inquirerMenu, pausa, listarLugares } = require('./helpers/inquirer')
+const { Busquedas } = require('./models/busquedas');
 
 const main = async () => {
     let opt;
@@ -10,22 +11,30 @@ const main = async () => {
         switch (opt) {
             case 1:
                     // Mostrar mensaje
-                    const lugar = await leerInput('Ciudad: ');
-                    console.log(lugar);
+                    const terminoBusqueda = await leerInput('Ciudad: ');
+                    const lugares = await busquedas.ciudad( terminoBusqueda );
+                    const idSeleccionado = await listarLugares(lugares)
+                    if(idSeleccionado === '0') continue;
+                    const lugarSeleccionado = lugares.find(l => l.id === idSeleccionado);
                     // Buscar los lugares
-                    
+
                     // Seleccionar el lugar
                     
                     // Datos del clima
-                    
+                    const clima = await busquedas.climaLugar(lugarSeleccionado.lat, lugarSeleccionado.lng);
                     // Mostar resultados
+                    console.clear();
                     console.log(` \n Información de la ciudad \n`.green);
-                    console.log('Ciudad',);
-                    console.log('Lat',);
-                    console.log('Lng',);
-                    console.log('Temperatura',);
-                    console.log('Mínima',);
-                    console.log('Maxima',);
+                    console.log('Ciudad: ', lugarSeleccionado.nombre.green);
+                    console.log('Lat: ', lugarSeleccionado.lat);
+                    console.log('Lng: ',lugarSeleccionado.lng);
+                    console.log('Temperatura:', clima.temp);
+                    console.log('Mínima:', clima.min);
+                    console.log('Maxima: ', clima.max);
+                    console.log('Como está el clima: ', clima.desc.green);
+                break;
+                case 2:
+
                 break;
         
             default:
