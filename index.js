@@ -17,7 +17,7 @@ const main = async () => {
                     if(idSeleccionado === '0') continue;
                     const lugarSeleccionado = lugares.find(l => l.id === idSeleccionado);
                     // Buscar los lugares
-
+                    busquedas.agregarHistorial( lugarSeleccionado.nombre );
                     // Seleccionar el lugar
                     
                     // Datos del clima
@@ -34,7 +34,10 @@ const main = async () => {
                     console.log('Como está el clima: ', clima.desc.green);
                 break;
                 case 2:
-
+                    busquedas.historialCapitalizado.forEach( (lugar, indice) => {
+                        const idx = `${indice + 1}`.green;
+                        console.log(`${ idx } ${ lugar }`);
+                    } )
                 break;
         
             default:
